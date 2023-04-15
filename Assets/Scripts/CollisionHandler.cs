@@ -4,17 +4,25 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 
 {
+    [SerializeField] AudioClip winLevel;
+    [SerializeField] AudioClip loseLevel;
     AudioSource audioSource;
+    Rigidbody rb;
+
+    bool isTransitioning = false; 
+    void Start() 
+     {
+         audioSource = GetComponent<AudioSource>();
+     }
      void OnCollisionEnter(Collision other) 
-     
     {
+        if (isTransitioning) { return; }
+
+
        switch (other.gameObject.tag)
        {
         case "Friendly":
             Debug.Log("You're touching a Friendly object!");
-            break;
-        case "Fuel":
-            Debug.Log("You're touching Fuel!");
             break;
         case "Finish":
             EndLevel();
@@ -25,21 +33,28 @@ public class CollisionHandler : MonoBehaviour
             break;
        }     
     }
+
 [SerializeField] float reloadTime = 1f;
 [SerializeField] float nextLevelTime = 1f;
     void StartCrashSequence()
     {
-        audioSource = GetComponent<AudioSource>();
+        //TODO:
+        //add Crash particles
+        isTransitioning = true;
         GetComponent<Movement>().enabled = false;
         audioSource.Stop();
+        audioSource.PlayOneShot(loseLevel);
         Invoke("ReloadLevel", reloadTime);
     }
 
     void EndLevel()
     {
-        audioSource = GetComponent<AudioSource>();
+        //TODO:
+        //add Success particles
+        isTransitioning = true;
         GetComponent<Movement>().enabled = false;
         audioSource.Stop();
+        audioSource.PlayOneShot(winLevel);
         Invoke("LoadNextLevel", nextLevelTime);
     }
     void ReloadLevel() 
@@ -57,5 +72,7 @@ public class CollisionHandler : MonoBehaviour
             nextSceneIndex = 0;
         }
         SceneManager.LoadScene(nextSceneIndex);
+
+    
     }
 }

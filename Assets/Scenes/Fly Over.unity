@@ -493,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3046263189008909057, guid: 1b24f85bdabe1544297c1636a8697aa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.26
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 3046263189008909057, guid: 1b24f85bdabe1544297c1636a8697aa4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -527,9 +527,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3046263189008909063, guid: 1b24f85bdabe1544297c1636a8697aa4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3046263189008909067, guid: 1b24f85bdabe1544297c1636a8697aa4, type: 3}
       propertyPath: m_Name
-      value: Cylinder
+      value: Rocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b24f85bdabe1544297c1636a8697aa4, type: 3}
