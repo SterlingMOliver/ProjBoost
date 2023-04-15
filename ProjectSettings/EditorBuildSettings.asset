@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Fly Over.unity
+    guid: 66cc9903a95547c45868bff98ce46c9d
+  - enabled: 1
+    path: Assets/Scenes/Under.unity
+    guid: 066367a435fcf88488b75ecd5bee4422
   m_configObjects: {}
