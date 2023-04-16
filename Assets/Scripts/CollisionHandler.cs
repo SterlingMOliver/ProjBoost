@@ -6,6 +6,10 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] AudioClip winLevel;
     [SerializeField] AudioClip loseLevel;
+
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem crashParticles;
+
     AudioSource audioSource;
     Rigidbody rb;
 
@@ -39,7 +43,7 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence()
     {
         //TODO:
-        //add Crash particles
+        crashParticles.Play();
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
         audioSource.Stop();
@@ -50,7 +54,7 @@ public class CollisionHandler : MonoBehaviour
     void EndLevel()
     {
         //TODO:
-        //add Success particles
+        successParticles.Play();
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
         audioSource.Stop();
