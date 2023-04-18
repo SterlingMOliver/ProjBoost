@@ -12,15 +12,34 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource audioSource;
     Rigidbody rb;
-
+    bool triggersDisabled = false;
     bool isTransitioning = false; 
     void Start() 
      {
          audioSource = GetComponent<AudioSource>();
      }
-     void OnCollisionEnter(Collision other) 
+     void Update()
     {
-        if (isTransitioning) { return; }
+        RespondToDebugKeys();
+
+    }
+
+    void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            triggersDisabled = !triggersDisabled;
+            Debug.Log("Triggers disabled = " + triggersDisabled);
+        }
+    }
+
+    void OnCollisionEnter(Collision other) 
+    {
+        if (isTransitioning || triggersDisabled) { return; }
 
 
        switch (other.gameObject.tag)
@@ -29,7 +48,7 @@ public class CollisionHandler : MonoBehaviour
             Debug.Log("You're touching a Friendly object!");
             break;
         case "Finish":
-            EndLevel();
+            WinLevel();
             Debug.Log("You've reached the end!");
             break;
         default:
@@ -42,7 +61,6 @@ public class CollisionHandler : MonoBehaviour
 [SerializeField] float nextLevelTime = 1f;
     void StartCrashSequence()
     {
-        //TODO:
         crashParticles.Play();
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
@@ -51,9 +69,8 @@ public class CollisionHandler : MonoBehaviour
         Invoke("ReloadLevel", reloadTime);
     }
 
-    void EndLevel()
+    void WinLevel()
     {
-        //TODO:
         successParticles.Play();
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
@@ -77,6 +94,9 @@ public class CollisionHandler : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex);
 
-    
+    //Debug keys
     }
-}
+    
+
+
+    }

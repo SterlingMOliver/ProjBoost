@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Under.unity
     guid: 066367a435fcf88488b75ecd5bee4422
+  - enabled: 1
+    path: Assets/Scenes/Gap.unity
+    guid: 0022cc90b6a79a8499d8bf71518eb8b5
+  - enabled: 1
+    path: Assets/Scenes/Many Gaps.unity
+    guid: 3ce56b639bfeaa2458c6442f648e8f1e
+  - enabled: 1
+    path: Assets/Scenes/Moving Gap.unity
+    guid: 4416b29e96f62834ab1366347960a93f
+  - enabled: 1
+    path: Assets/Scenes/Many Moving Gaps.unity
+    guid: aa45675970fef814e9dec9e2b951d672
+  - enabled: 1
+    path: Assets/Scenes/more shit moving.unity
+    guid: ee141dced3bf8334cbc426fb5e61a230
   m_configObjects: {}
